@@ -1,5 +1,7 @@
 dependencies {
     api("com.fasterxml.jackson.core:jackson-databind:2.17.1")
+    api("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.1")
+    api("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.17.1")
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
     testImplementation("org.assertj:assertj-core:3.25.3")
