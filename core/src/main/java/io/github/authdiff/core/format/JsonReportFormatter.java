@@ -1,4 +1,4 @@
-package io.github.authdiff.cli.format;
+package io.github.authdiff.core.format;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;

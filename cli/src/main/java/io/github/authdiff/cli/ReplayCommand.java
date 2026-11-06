@@ -1,8 +1,8 @@
 package io.github.authdiff.cli;
 
-import io.github.authdiff.cli.format.JsonReportFormatter;
-import io.github.authdiff.cli.format.MarkdownReportFormatter;
-import io.github.authdiff.cli.format.TableFormatter;
+import io.github.authdiff.core.format.JsonReportFormatter;
+import io.github.authdiff.core.format.MarkdownReportFormatter;
+import io.github.authdiff.core.format.TableFormatter;
 import io.github.authdiff.cli.har.HarParser;
 import io.github.authdiff.cli.replay.HttpReplayer;
 import io.github.authdiff.core.detection.AuthDiffClassifier;

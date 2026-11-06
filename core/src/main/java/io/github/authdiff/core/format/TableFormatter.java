@@ -1,4 +1,4 @@
-package io.github.authdiff.cli.format;
+package io.github.authdiff.core.format;
 
 import io.github.authdiff.core.model.AuthDiffFinding;
 import io.github.authdiff.core.model.ConfidenceScore;
