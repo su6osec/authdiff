@@ -24,7 +24,7 @@ This document provides a factual, unembellished summary of what `authdiff` imple
 
 ## 2. What Has Been Verified by Automated Tests
 
-The repository includes 32 automated JUnit 5 tests covering all three modules:
+The repository includes 33 automated JUnit 5 tests covering all three modules:
 
 ### `core` (25 Unit Tests)
 - `AuthDiffClassifierTest`:
@@ -57,7 +57,7 @@ The repository includes 32 automated JUnit 5 tests covering all three modules:
 - `CredentialRedactorTest`:
   - Verified redaction of Authorization headers, cookies, API keys, and sensitive query parameters.
 
-### `cli` (5 Unit & Integration Tests)
+### `cli` (6 Unit & Integration Tests)
 - `HarParserTest`:
   - Verified parsing of standard HAR 1.2 JSON entries into domain `HttpRequest` and `HttpResponse`.
 - `CompareCommandTest`:
@@ -67,6 +67,8 @@ The repository includes 32 automated JUnit 5 tests covering all three modules:
 - `HttpReplayerSafetyTest`:
   - Verified scope host validation: rejects requests to out-of-scope hosts.
   - Verified safe methods default: refuses state-changing verbs (`DELETE`, `POST`) unless explicit flag is enabled.
+- `LiveHttpReplayTest`:
+  - Verified active live HTTP network replay against a live HTTP server, correctly classifying live IDOR/BOLA endpoints and live enforced access control endpoints.
 
 ### `burp-extension` (2 Unit Tests)
 - `MontoyaModelConverterTest`:
