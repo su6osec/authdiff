@@ -1,11 +1,28 @@
 # authdiff
 
 [![CI Build & Test](https://github.com/su6osec/authdiff/actions/workflows/ci.yml/badge.svg)](https://github.com/su6osec/authdiff/actions)
+[![Release](https://img.shields.io/github/v/release/su6osec/authdiff?color=blue)](https://github.com/su6osec/authdiff/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Montoya API](https://img.shields.io/badge/Montoya%20API-2026.7-blue.svg)](https://portswigger.net/burp/documentation/desktop/extensions)
 [![Java 17+](https://img.shields.io/badge/Java-17%2B-orange.svg)](https://adoptium.net/)
 
-> **authdiff** is an authorization diffing engine that detects Broken Access Control (IDOR / BOLA and Missing Authentication) by replaying HTTP requests captured under one user's session using alternative identities (a secondary low-privilege user and an unauthenticated client), then comparing the responses deterministically.
+> **authdiff** is an automated authorization diffing engine for **Burp Suite Community & Professional** and the **Command Line (CLI)**. It identifies Broken Object Level Authorization (**BOLA** / **IDOR**) and **Missing Authentication** (OWASP Top 10 A01:2021 & OWASP API Security API1:2023) by replaying HTTP traffic captured under a resource owner's session using alternative user identities (a low-privilege attacker and an unauthenticated client) and computing deterministic response differentials.
+
+👉 **[Download Pre-built Burp Extension (`authdiff-burp-all.jar`)](https://github.com/su6osec/authdiff/releases/latest)**
+
+---
+
+## Why authdiff? (Comparison Matrix)
+
+| Capability | authdiff | Legacy Burp Plugins (e.g. Autorize) | Manual Repeater / Diff |
+| :--- | :---: | :---: | :---: |
+| **Burp Community Compatible** | **Yes** (Montoya API) | Varies (older Extender API) | Yes |
+| **Headless / CI CLI Mode** | **Yes** (Offline HAR & Replay) | No (GUI only) | No |
+| **Object-ID Awareness** | **Yes** (Path, Query, JSON body) | No (Matches endpoints blindly) | Manual |
+| **Dynamic Noise Normalization** | **Yes** (Timestamps, nonces, ETags) | No (Triggers false diffs) | Manual |
+| **Linear-Time Comparison** | **Yes** (Token-Set Jaccard $\mathcal{O}(N+M)$) | Levenshtein / raw length | Eye inspection |
+| **Deceptive Trap Detection** | **Yes** (200-error, SPA shells, 302 login) | Weak (High false positive rate) | Manual |
+| **Safety Defaults** | **Yes** (GET-only default, scope check, rate limit) | User-configured filters | Manual caution |
 
 Available as:
 1. **Burp Suite Extension** (Montoya API, fully compatible with **Burp Suite Community Edition**).
