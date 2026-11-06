@@ -9,6 +9,7 @@ dependencies {
 }
 
 tasks.jar {
+    dependsOn(":core:jar")
     archiveFileName.set("authdiff-burp-all.jar")
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
