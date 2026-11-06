@@ -1,0 +1,45 @@
+name: CI Build & Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build & Test (Java 21)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up OpenJDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'gradle'
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/actions/wrapper-validation@v3
+
+      - name: Build with Gradle
+        run: ./gradlew build --info
+
+      - name: Verify CLI Installation
+        run: |
+          ./gradlew :cli:installDist
+          ./cli/build/install/cli/bin/cli --help
+          ./cli/build/install/cli/bin/cli compare \
+            --a cli/src/test/resources/fixtures/owner.har \
+            --b cli/src/test/resources/fixtures/attacker.har \
+            --anon cli/src/test/resources/fixtures/anon.har \
+            --format TABLE \
+            --fail-on NONE
+
+      - name: Verify Burp Extension Fat JAR
+        run: |
+          test -f burp-extension/build/libs/authdiff-burp-all.jar
+          jar -tf burp-extension/build/libs/authdiff-burp-all.jar | grep "AuthDiffExtension.class"
