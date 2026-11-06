@@ -1,6 +1,6 @@
 # authdiff
 
-[![CI Build & Test](https://github.com/authdiff/authdiff/actions/workflows/ci.yml/badge.svg)](https://github.com/authdiff/authdiff/actions)
+[![CI Build & Test](https://github.com/su6osec/authdiff/actions/workflows/ci.yml/badge.svg)](https://github.com/su6osec/authdiff/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Montoya API](https://img.shields.io/badge/Montoya%20API-2026.7-blue.svg)](https://portswigger.net/burp/documentation/desktop/extensions)
 [![Java 17+](https://img.shields.io/badge/Java-17%2B-orange.svg)](https://adoptium.net/)
@@ -47,7 +47,7 @@ Available as:
 Clone the repository and build with Gradle:
 
 ```bash
-git clone https://github.com/authdiff/authdiff.git
+git clone https://github.com/su6osec/authdiff.git
 cd authdiff
 ./gradlew build
 ```
